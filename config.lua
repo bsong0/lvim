@@ -40,14 +40,3 @@ if vim.g.neovide then
 end
 
 require('autocommands')
-local notify = vim.notify
-vim.notify = function(msg, ...)
-  if msg:match("warning: multiple different client offset_encodings detected for buffer, this is not supported yet") then
-    return
-  end
-
-  notify(msg, ...)
-end
-lvim.builtin.treesitter.indent = {
-  disable = { "cpp" }
-}
