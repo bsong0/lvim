@@ -1,6 +1,25 @@
 vim.api.nvim_set_option("clipboard", "unnamed")
 
 lvim.plugins = {
+  {
+    "klen/nvim-config-local",
+    config = function()
+      require('config-local').setup {
+        -- Default options (optional)
+
+        -- Config file patterns to load (lua supported)
+        config_files = { ".nvim.lua", ".nvimrc", ".exrc" },
+
+        -- Where the plugin keeps files data
+        hashfile = vim.fn.stdpath("data") .. "/config-local",
+
+        autocommands_create = true, -- Create autocommands (VimEnter, DirectoryChanged)
+        commands_create = true,     -- Create commands (ConfigLocalSource, ConfigLocalEdit, ConfigLocalTrust, ConfigLocalIgnore)
+        silent = false,             -- Disable plugin messages (Config loaded/ignored)
+        lookup_parents = true,     -- Lookup config files in parent directories
+      }
+    end
+  },
   { "shaunsingh/nord.nvim" },
   {
     "kylechui/nvim-surround",
@@ -40,3 +59,12 @@ if vim.g.neovide then
 end
 
 require('autocommands')
+lvim.builtin.treesitter.indent = {
+  disable = { "cpp" }
+}
+
+vim.opt.relativenumber = true
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 99

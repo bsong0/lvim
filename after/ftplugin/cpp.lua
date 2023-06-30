@@ -13,9 +13,6 @@ end
 
 vim.keymap.set('n', 'gh', ':ClangdSwitchSourceHeader<CR>')
 vim.keymap.set('n', 'gf', ':lua vim.lsp.buf.code_action()<CR>')
-lvim.builtin.treesitter.indent = {
-  disable = { "cpp" }
-}
 
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
@@ -24,3 +21,5 @@ linters.setup {
     args = { "--enable=warning,style,performance,portability", "--template=gcc", "$FILENAME", "--std" }
   }
 }
+vim.o.tabstop = 4
+vim.opt.shiftwidth = 4
