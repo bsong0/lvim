@@ -2,6 +2,14 @@ vim.api.nvim_set_option("clipboard", "unnamed")
 
 lvim.plugins = {
   {
+    "danymat/neogen",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    cmd = "Neogen",
+    config = true,
+    -- Uncomment next line if you want to follow only stable versions
+    -- version = "*"
+  },
+  {
     "klen/nvim-config-local",
     config = function()
       require('config-local').setup {
@@ -16,7 +24,7 @@ lvim.plugins = {
         autocommands_create = true, -- Create autocommands (VimEnter, DirectoryChanged)
         commands_create = true,     -- Create commands (ConfigLocalSource, ConfigLocalEdit, ConfigLocalTrust, ConfigLocalIgnore)
         silent = false,             -- Disable plugin messages (Config loaded/ignored)
-        lookup_parents = true,     -- Lookup config files in parent directories
+        lookup_parents = true,      -- Lookup config files in parent directories
       }
     end
   },
