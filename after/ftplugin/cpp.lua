@@ -17,7 +17,7 @@ vim.keymap.set('n', 'gf', ':lua vim.lsp.buf.code_action()<CR>')
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   {
-    name = "cpptools",
+    name = "cpplint",
   }
 }
 vim.o.tabstop = 4
