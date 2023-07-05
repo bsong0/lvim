@@ -17,8 +17,7 @@ vim.keymap.set('n', 'gf', ':lua vim.lsp.buf.code_action()<CR>')
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   {
-    name = "cppcheck",
-    args = { "--enable=warning,style,performance,portability", "--template=gcc", "$FILENAME", "--std" }
+    name = "cpptools",
   }
 }
 vim.o.tabstop = 4
