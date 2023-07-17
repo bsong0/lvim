@@ -22,3 +22,19 @@ linters.setup {
 }
 vim.o.tabstop = 4
 vim.opt.shiftwidth = 4
+
+function FormatFunction()
+  vim.lsp.buf.format({
+    async = true,
+
+    range = {
+      ["start"] = vim.api.nvim_buf_get_mark(0, "<"),
+      ["end"] = vim.api.nvim_buf_get_mark(0, ">"),
+    }
+  })
+end
+
+vim.keymap.set({"n", "v"}, "<leader>lf", function()
+    vim.lsp.buf.format({ async = true })
+end)
+

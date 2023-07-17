@@ -38,7 +38,7 @@ lvim.plugins = {
             }
         end
     },
-    { "shaunsingh/nord.nvim" },
+    { "AlexvZyl/nordic.nvim" },
     {
         "kylechui/nvim-surround",
 
@@ -64,13 +64,13 @@ lvim.plugins = {
         event = { "WinNew" },
     }
 }
-lvim.colorscheme = "nord"
+lvim.colorscheme = "nordic"
 
 lvim.keys.normal_mode["<S-Tab>"] = ":bprev<CR>"
 lvim.keys.normal_mode["<Tab>"] = ":bnext<CR>"
 lvim.keys.normal_mode["q:"] = "<nop>"
 lvim.keys.normal_mode["Q"] = "<nop>"
-lvim.keys.normal_mode["ga"] = "<cmd>lua vim.lsp.buf.code_action()<CR>"
+lvim.keys.normal_mode["<leader>ss"] = ":lua require'telescope.builtin'.lsp_dynamic_workspace_symbols{}<CR>"
 
 if vim.g.neovide then
     vim.o.guifont = "ComicCode Nerd Font:h9"
