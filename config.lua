@@ -32,13 +32,15 @@ lvim.plugins = {
                 hashfile = vim.fn.stdpath("data") .. "/config-local",
 
                 autocommands_create = true, -- Create autocommands (VimEnter, DirectoryChanged)
-                commands_create = true, -- Create commands (ConfigLocalSource, ConfigLocalEdit, ConfigLocalTrust, ConfigLocalIgnore)
-                silent = false,     -- Disable plugin messages (Config loaded/ignored)
-                lookup_parents = true, -- Lookup config files in parent directories
+                commands_create = true,     -- Create commands (ConfigLocalSource, ConfigLocalEdit, ConfigLocalTrust, ConfigLocalIgnore)
+                silent = false,             -- Disable plugin messages (Config loaded/ignored)
+                lookup_parents = true,      -- Lookup config files in parent directories
             }
         end
     },
     { "AlexvZyl/nordic.nvim" },
+    { "shaunsingh/nord.nvim" },
+    { "luisiacc/gruvbox-baby" },
     {
         "kylechui/nvim-surround",
 
@@ -49,6 +51,10 @@ lvim.plugins = {
                 -- Configuration here, or leave empty to use defaults
             })
         end
+    },
+    {
+        "junegunn/vim-easy-align",
+        keys = { { "ga", "<Plug>(EasyAlign)", mode = { "n", "x" } } },
     },
     {
         "ggandor/leap.nvim",
@@ -64,7 +70,7 @@ lvim.plugins = {
         event = { "WinNew" },
     }
 }
-lvim.colorscheme = "nordic"
+lvim.colorscheme = "gruvbox-baby"
 
 lvim.keys.normal_mode["<S-Tab>"] = ":bprev<CR>"
 lvim.keys.normal_mode["<Tab>"] = ":bnext<CR>"
