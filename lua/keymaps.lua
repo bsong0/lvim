@@ -4,3 +4,4 @@ lvim.keys.normal_mode["q:"] = "<nop>"
 lvim.keys.normal_mode["Q"] = "<nop>"
 lvim.keys.normal_mode["<leader>ss"] = ":lua require'telescope.builtin'.lsp_dynamic_workspace_symbols{}<CR>"
 
+lvim.keys.insert_mode["jk"] = "<ESC>"
