@@ -2,6 +2,10 @@ lua << EOF
 lvim.builtin.cmp.active = false
 EOF
 
+if empty(v:servername) && exists('*remote_startserver')
+  call remote_startserver('VIM')
+endif
+
 " LateX-specfic configuration related to the VimTeX plugin
 
 nmap <leader>i <plug>(vimtex-info)
@@ -61,8 +65,11 @@ call system(printf("echo %s > %s", "TEX", "/tmp/inverse-search-target.txt"))
 " ---------------------------------------------
 nmap <leader>v <plug>(vimtex-view)
 
+let g:vimtex_view_enabled = 1
+
 " Linux forward search implementation
 if has('unix')
+  let g:vimtex_view_method = 'zathura'
   " Get Vim's window ID for switching focus from Zathura to Vim using xdotool.
   " Only set this variable once for the current Vim instance.
   if !exists("g:vim_window_id")
