@@ -21,15 +21,25 @@ lvim.plugins = {
             imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
             " -1 for jumping backwards.
             inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
-            
+
             snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
             snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
-            
+
             " For changing choices in choiceNodes (not strictly necessary for a basic setup).
             imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
             smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
             ]])
-            require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/lvim/luasnippets/"})
+            require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/lvim/luasnippets/" })
+            local list_snips = function()
+                local ft_list = require("luasnip").available()[vim.o.filetype]
+                local ft_snips = {}
+                for _, item in pairs(ft_list) do
+                    ft_snips[item.trigger] = item.name
+                end
+                print(vim.inspect(ft_snips))
+            end
+
+            vim.api.nvim_create_user_command("SnipList", list_snips, {})
         end
     },
     {
@@ -104,5 +114,49 @@ lvim.plugins = {
     {
         "lervag/vimtex",
         ft = "tex"
+    },
+    {
+        'nvimdev/indentmini.nvim',
+        event = 'BufEnter',
+        config = function()
+            require('indentmini').setup({
+                char = '',
+            })
+        end,
+    },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- add any options here
+        },
+        dependencies = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            -- OPTIONAL:
+            --   `nvim-notify` is only needed, if you want to use the notification view.
+            --   If not available, we use `mini` as the fallback
+            "rcarriga/nvim-notify",
+        },
+        config = function()
+            require("noice").setup({
+                lsp = {
+                    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+                    override = {
+                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                        ["vim.lsp.util.stylize_markdown"] = true,
+                        ["cmp.entry.get_documentation"] = true,
+                    },
+                },
+                -- you can enable a preset for easier configuration
+                presets = {
+                    bottom_search = true, -- use a classic bottom cmdline for search
+                    command_palette = true, -- position the cmdline and popupmenu together
+                    long_message_to_split = true, -- long messages will be sent to a split
+                    inc_rename = false, -- enables an input dialog for inc-rename.nvim
+                    lsp_doc_border = true, -- add a border to hover docs and signature help
+                },
+            })
+        end
     }
 }
