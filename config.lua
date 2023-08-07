@@ -1,3 +1,4 @@
+vim.loader.enable()
 lvim.builtin.luasnip.active = false
 lvim.builtin.indentlines.active = false
 
