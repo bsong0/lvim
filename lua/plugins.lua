@@ -124,51 +124,91 @@ lvim.plugins = {
             })
         end,
     },
+    -- {
+    --     "folke/noice.nvim",
+    --     event = "VeryLazy",
+    --     opts = {
+    --         -- add any options here
+    --     },
+    --     dependencies = {
+    --         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    --         "MunifTanjim/nui.nvim",
+    --         -- OPTIONAL:
+    --         --   `nvim-notify` is only needed, if you want to use the notification view.
+    --         --   If not available, we use `mini` as the fallback
+    --         "rcarriga/nvim-notify",
+    --     },
+    --     config = function()
+    --         local filter_cpp_warn = {
+    --             find =
+    --             "warning: multiple different client offset_encodings detected for buffer, this is not supported yet"
+    --         }
+    --         require("noice").setup({
+    --             lsp = {
+    --                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+    --                 override = {
+    --                     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+    --                     ["vim.lsp.util.stylize_markdown"] = true,
+    --                     ["cmp.entry.get_documentation"] = true,
+    --                 },
+    --             },
+    --             messages = {
+    --                 view = "mini"
+    --             },
+    --             -- you can enable a preset for easier configuration
+    --             presets = {
+    --                 bottom_search = true,         -- use a classic bottom cmdline for search
+    --                 command_palette = true,       -- position the cmdline and popupmenu together
+    --                 long_message_to_split = true, -- long messages will be sent to a split
+    --                 inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+    --                 lsp_doc_border = true,        -- add a border to hover docs and signature help
+    --             },
+    --             routes = { {
+    --                 filter = filter_cpp_warn,
+    --                 opts = { skip = true }
+    --             } },
+    --         })
+    --     end
+    -- },
+    { 'akinsho/git-conflict.nvim', version = "*", config = true },
     {
-        "folke/noice.nvim",
+        "ray-x/lsp_signature.nvim",
         event = "VeryLazy",
-        opts = {
-            -- add any options here
-        },
-        dependencies = {
-            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-            "MunifTanjim/nui.nvim",
-            -- OPTIONAL:
-            --   `nvim-notify` is only needed, if you want to use the notification view.
-            --   If not available, we use `mini` as the fallback
-            "rcarriga/nvim-notify",
-        },
-        config = function()
-            local filter_cpp_warn = {
-                find =
-                "warning: multiple different client offset_encodings detected for buffer, this is not supported yet"
-            }
-            require("noice").setup({
-                lsp = {
-                    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-                    override = {
-                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                        ["vim.lsp.util.stylize_markdown"] = true,
-                        ["cmp.entry.get_documentation"] = true,
-                    },
-                },
-                messages = {
-                    view = "mini"
-                },
-                -- you can enable a preset for easier configuration
-                presets = {
-                    bottom_search = true,         -- use a classic bottom cmdline for search
-                    command_palette = true,       -- position the cmdline and popupmenu together
-                    long_message_to_split = true, -- long messages will be sent to a split
-                    inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-                    lsp_doc_border = true,        -- add a border to hover docs and signature help
-                },
-                routes = { {
-                    filter = filter_cpp_warn,
-                    opts = { skip = true }
-                } },
-            })
-        end
+        opts = {},
+        config = function(_, opts) require 'lsp_signature'.setup(opts) end
     },
-    {'akinsho/git-conflict.nvim', version = "*", config = true}
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        },
+    },
+    {
+        'stevearc/dressing.nvim',
+        opts = {},
+    },
+    {
+        'nvimdev/lspsaga.nvim',
+        config = function()
+            require('lspsaga').setup {
+                symbol_in_winbar = {
+                    enable = false
+                },
+                ui = {
+                    code_action = ''
+                },
+                lightbulb = {
+                    virtual_text = false
+                }
+            }
+        end,
+        event = 'LspAttach',
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter', -- optional
+            'nvim-tree/nvim-web-devicons'      -- optional
+        }
+    }
 }
