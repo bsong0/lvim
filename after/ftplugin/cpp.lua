@@ -12,7 +12,6 @@ vim.notify = function(msg, ...)
 end
 
 vim.keymap.set('n', 'gh', ':ClangdSwitchSourceHeader<CR>')
-vim.keymap.set('n', 'gf', ':Lspsaga code_action')
 
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {

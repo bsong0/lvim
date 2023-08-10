@@ -115,62 +115,15 @@ lvim.plugins = {
         "lervag/vimtex",
         ft = "tex"
     },
-    {
-        'nvimdev/indentmini.nvim',
-        event = 'BufEnter',
-        config = function()
-            require('indentmini').setup({
-                char = '',
-            })
-        end,
-    },
     -- {
-    --     "folke/noice.nvim",
-    --     event = "VeryLazy",
-    --     opts = {
-    --         -- add any options here
-    --     },
-    --     dependencies = {
-    --         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-    --         "MunifTanjim/nui.nvim",
-    --         -- OPTIONAL:
-    --         --   `nvim-notify` is only needed, if you want to use the notification view.
-    --         --   If not available, we use `mini` as the fallback
-    --         "rcarriga/nvim-notify",
-    --     },
-    --     config = function()
-    --         local filter_cpp_warn = {
-    --             find =
-    --             "warning: multiple different client offset_encodings detected for buffer, this is not supported yet"
-    --         }
-    --         require("noice").setup({
-    --             lsp = {
-    --                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-    --                 override = {
-    --                     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-    --                     ["vim.lsp.util.stylize_markdown"] = true,
-    --                     ["cmp.entry.get_documentation"] = true,
-    --                 },
-    --             },
-    --             messages = {
-    --                 view = "mini"
-    --             },
-    --             -- you can enable a preset for easier configuration
-    --             presets = {
-    --                 bottom_search = true,         -- use a classic bottom cmdline for search
-    --                 command_palette = true,       -- position the cmdline and popupmenu together
-    --                 long_message_to_split = true, -- long messages will be sent to a split
-    --                 inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-    --                 lsp_doc_border = true,        -- add a border to hover docs and signature help
-    --             },
-    --             routes = { {
-    --                 filter = filter_cpp_warn,
-    --                 opts = { skip = true }
-    --             } },
-    --         })
-    --     end
+    --   'nvimdev/indentmini.nvim',
+    --   event = 'BufEnter',
+    --   config = function()
+    --     require('indentmini').setup({
+    --       char = '',
+    --     })
+    --   end,
     -- },
-    { 'akinsho/git-conflict.nvim', version = "*", config = true },
     {
         "ray-x/lsp_signature.nvim",
         event = "VeryLazy",
@@ -210,5 +163,24 @@ lvim.plugins = {
             'nvim-treesitter/nvim-treesitter', -- optional
             'nvim-tree/nvim-web-devicons'      -- optional
         }
+    },
+    {
+        'echasnovski/mini.indentscope',
+        version = false,
+        config = function()
+            require('mini.indentscope').setup({
+                draw = {
+                    animation = require('mini.indentscope').gen_animation.none()
+                },
+                mappings = {
+                    object_scope = '',
+                    object_scope_with_border = '',
+
+                    -- Motions (jump to respective border line; if not present - body line)
+                    goto_top = '',
+                    goto_bottom = '',
+                }
+            })
+        end
     }
 }
