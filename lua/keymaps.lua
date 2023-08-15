@@ -7,7 +7,8 @@ lvim.keys.insert_mode["jk"] = "<ESC>"
 
 lvim.keys.command_mode["w!!"] = "w !sudo tee > /dev/null %"
 
-lvim.keys.normal_mode["<leader>ss"] = ":Lspsaga finder tyd+ref+imp+def<CR>"
+lvim.keys.normal_mode["<leader>ss"] = ":lua require'telescope.builtin'.lsp_dynamic_workspace_symbols{}<CR>"
+lvim.keys.normal_mode["<leader>su"] = ":Lspsaga finder tyd+ref+imp+def<CR>"
 lvim.keys.normal_mode["<leader>lci"] = ":Lspsaga incoming_calls<CR>"
 lvim.keys.normal_mode["<leader>lco"] = ":Lspsaga outgoing_calls<CR>"
 lvim.keys.normal_mode["gf"] = ":Lspsaga code_action <CR>"
