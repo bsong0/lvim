@@ -115,21 +115,6 @@ lvim.plugins = {
     "lervag/vimtex",
     ft = "tex"
   },
-  -- {
-  --   'nvimdev/indentmini.nvim',
-  --   event = 'BufEnter',
-  --   config = function()
-  --     require('indentmini').setup({
-  --       char = '',
-  --     })
-  --   end,
-  -- },
-  -- {
-  --   "ray-x/lsp_signature.nvim",
-  --   event = "VeryLazy",
-  --   opts = {},
-  --   config = function(_, opts) require 'lsp_signature'.setup(opts) end
-  -- },
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
