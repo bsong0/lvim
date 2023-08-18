@@ -22,3 +22,7 @@ vim.opt.foldlevel = 99
 
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
+
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {
+    "clangd",
+})
