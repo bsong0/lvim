@@ -26,3 +26,4 @@ vim.o.shiftwidth = 4
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {
     "clangd",
 })
+lvim.lazy.opts.performance.cache = { enabled = true }
