@@ -2,28 +2,19 @@ vim.loader.disable()
 lvim.builtin.luasnip.active = false
 lvim.builtin.indentlines.active = false
 
-require('autocommands')
-require('plugins')
-require('keymaps')
--- require('lsp_border')
-lvim.colorscheme = "nord"
-
-vim.api.nvim_set_option("clipboard", "unnamed")
-
 lvim.builtin.treesitter.indent = {
     disable = { "cpp" }
 }
 
-vim.opt.relativenumber = true
-
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldlevel = 99
-
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {
     "clangd",
 })
+
 lvim.lazy.opts.performance.cache = { enabled = true }
+
+require('autocommands')
+require('plugins')
+require('keymaps')
+require('theme')
+require('misc')
+
