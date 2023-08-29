@@ -73,9 +73,9 @@ lvim.plugins = {
                 hashfile = vim.fn.stdpath("data") .. "/config-local",
 
                 autocommands_create = true, -- Create autocommands (VimEnter, DirectoryChanged)
-                commands_create = true, -- Create commands (ConfigLocalSource, ConfigLocalEdit, ConfigLocalTrust, ConfigLocalIgnore)
-                silent = false,     -- Disable plugin messages (Config loaded/ignored)
-                lookup_parents = true, -- Lookup config files in parent directories
+                commands_create = true,     -- Create commands (ConfigLocalSource, ConfigLocalEdit, ConfigLocalTrust, ConfigLocalIgnore)
+                silent = false,             -- Disable plugin messages (Config loaded/ignored)
+                lookup_parents = true,      -- Lookup config files in parent directories
             }
         end
     },
@@ -147,7 +147,7 @@ lvim.plugins = {
         event = 'LspAttach',
         dependencies = {
             'nvim-treesitter/nvim-treesitter', -- optional
-            'nvim-tree/nvim-web-devicons' -- optional
+            'nvim-tree/nvim-web-devicons'      -- optional
         }
     },
     {
@@ -201,5 +201,6 @@ lvim.plugins = {
         "levouh/tint.nvim",
         event = { "WinNew" },
         config = true
-    }
+    },
+    { "EdenEast/nightfox.nvim" }
 }

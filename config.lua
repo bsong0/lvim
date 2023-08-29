@@ -17,4 +17,3 @@ require('plugins')
 require('keymaps')
 require('theme')
 require('misc')
-

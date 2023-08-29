@@ -24,4 +24,4 @@ local header = {
 }
 lvim.builtin.alpha.dashboard.section.header = header
 
-lvim.colorscheme = "nord"
+lvim.colorscheme = "nordfox"
