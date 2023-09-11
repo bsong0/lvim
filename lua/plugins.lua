@@ -202,5 +202,6 @@ lvim.plugins = {
         event = { "WinNew" },
         config = true
     },
-    { "EdenEast/nightfox.nvim" }
+    { "EdenEast/nightfox.nvim" },
+    { 'echasnovski/mini.nvim', version = false, event = "VeryLazy" }
 }
