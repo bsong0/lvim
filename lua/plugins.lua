@@ -203,5 +203,16 @@ lvim.plugins = {
         config = true
     },
     { "EdenEast/nightfox.nvim" },
-    { 'echasnovski/mini.nvim', version = false, event = "VeryLazy" }
+    { 'echasnovski/mini.nvim', version = false, event = "VeryLazy" },
+    {
+        "ray-x/lsp_signature.nvim",
+        event = "VeryLazy",
+        opts = {},
+        config = function(_, opts) require 'lsp_signature'.setup(opts) end
+    },
+    {
+        "simrat39/symbols-outline.nvim",
+        event = "VeryLazy",
+        config = true,
+    }
 }
