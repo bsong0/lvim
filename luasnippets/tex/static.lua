@@ -49,12 +49,12 @@ return
       },
       {condition = tex.in_mathzone}
     ),
-    s({trig="forall", snippetType="autosnippet"},
-      {
-        t("\\text{ for all } "),
-      },
-      {condition = tex.in_mathzone}
-    ),
+    -- s({trig="forall", snippetType="autosnippet"},
+    --   {
+    --     t("\\text{ for all } "),
+    --   },
+    --   {condition = tex.in_mathzone}
+    -- ),
     s({trig = "toc", snippetType="autosnippet"},
       {
         t("\\tableofcontents"),

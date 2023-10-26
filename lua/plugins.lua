@@ -214,5 +214,56 @@ lvim.plugins = {
         "simrat39/symbols-outline.nvim",
         event = "VeryLazy",
         config = true,
+        event = "VeryLazy",
+        config = true
+    },
+    {
+        "simrat39/rust-tools.nvim",
+        dependencies = {
+            "neovim/nvim-lspconfig",
+            "nvim-lua/plenary.nvim",
+            "mfussenegger/nvim-dap"
+        },
+        ft = "rust",
+        config = true
+    },
+    { "github/copilot.vim" },
+    {
+        "andweeb/presence.nvim",
+        event = "VeryLazy"
+    },
+    {
+        "zbirenbaum/neodim",
+        event = "LspAttach",
+        config = function()
+            require("neodim").setup({
+                refresh_delay = 75,
+                alpha = 0.75,
+                blend_color = "#000000",
+                hide = {
+                    underline = true,
+                    virtual_text = true,
+                    signs = true,
+                },
+                regex = {
+                    "[uU]nused",
+                    "[nN]ever [rR]ead",
+                    "[nN]ot [rR]ead",
+                },
+                priority = 128,
+                disable = {},
+            })
+        end
+    },
+    {
+        "max397574/better-escape.nvim",
+        config = function()
+            require("better_escape").setup()
+        end,
+    },
+    {
+        "chrisgrieser/nvim-origami",
+        event = "BufReadPost", -- later or on keypress would prevent saving folds
+        opts = true,    -- needed even when using default config
     }
 }

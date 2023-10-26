@@ -1,14 +1,16 @@
 vim.loader.enable()
 lvim.builtin.luasnip.active = false
 lvim.builtin.indentlines.active = false
+lvim.lsp.installer.setup.automatic_installation = false
 
 lvim.builtin.treesitter.indent = {
     disable = { "cpp" }
 }
 
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {
-    "clangd",
-})
+
+lvim.lsp.automatic_configuration.skipped_servers = {
+    "clangd", "rust_analyzer"
+}
 
 lvim.lazy.opts.performance.cache = { enabled = true }
 
