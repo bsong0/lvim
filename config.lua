@@ -13,6 +13,7 @@ lvim.lsp.automatic_configuration.skipped_servers = {
 }
 
 lvim.lazy.opts.performance.cache = { enabled = true }
+lvim.lsp.installer.setup.automatic_installation = false
 
 require('autocommands')
 require('plugins')

@@ -1,4 +1,5 @@
 lvim.plugins = {
+
     {
         "L3MON4D3/LuaSnip",
         -- follow latest release.
@@ -117,6 +118,7 @@ lvim.plugins = {
     },
     {
         "folke/trouble.nvim",
+        event = "LspAttach",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
             -- your configuration comes here
@@ -171,30 +173,24 @@ lvim.plugins = {
         end
     },
     {
-        'stevearc/stickybuf.nvim',
-        config = function()
-            require("stickybuf").setup({
-                -- This function is run on BufEnter to determine pinning should be activated
-                get_auto_pin = function(bufnr)
-                    -- You can return "bufnr", "buftype", "filetype", or a custom function to set how the window will be pinned
-                    -- The function below encompasses the default logic. Inspect the source to see what it does.
-                    return require("stickybuf").should_auto_pin(bufnr)
-                end
-            })
-        end
+        "p00f/clangd_extensions.nvim",
+        ft = { "c", "cpp" },
+        lazy = true
     },
-    { "p00f/clangd_extensions.nvim", lazy = true },
     {
         'lukas-reineke/headlines.nvim',
         dependencies = "nvim-treesitter/nvim-treesitter",
         ft = 'markdown',
+        event = "VeryLazy",
         config = true, -- or `opts = {}`
     },
     {
-        "chaoren/vim-wordmotion"
+        "chaoren/vim-wordmotion",
+        event = "VeryLazy",
     },
     {
         "lewis6991/satellite.nvim",
+        event = "VeryLazy",
         config = true
     },
     {
@@ -202,11 +198,10 @@ lvim.plugins = {
         event = { "WinNew" },
         config = true
     },
-    { "EdenEast/nightfox.nvim" },
     { 'echasnovski/mini.nvim', version = false, event = "VeryLazy" },
     {
         "ray-x/lsp_signature.nvim",
-        event = "VeryLazy",
+        event = "LspAttach",
         opts = {},
         config = function(_, opts) require 'lsp_signature'.setup(opts) end
     },
