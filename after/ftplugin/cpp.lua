@@ -12,6 +12,8 @@ vim.keymap.set({ "n", "v" }, "<leader>lf", function()
     vim.lsp.buf.format({ async = true })
 end)
 
+vim.keymap.set({ "n", "v" }, "<leader>lF", '<cmd>Lspsaga code_action<CR>')
+
 -- require "lsp_signature".setup({})
 
 -- BEGIN CLANGD SETUP
@@ -48,7 +50,7 @@ end
 local custom_on_init = function(client, bufnr)
     require("lvim.lsp").common_on_init(client, bufnr)
     require("clangd_extensions.config").setup {}
-    require("clangd_extensions.ast").init()
+    -- require("clangd_extensions.ast").init()
     vim.cmd [[
   command ClangdToggleInlayHints lua require('clangd_extensions.inlay_hints').toggle_inlay_hints()
   command -range ClangdAST lua require('clangd_extensions.ast').display_ast(<line1>, <line2>)
