@@ -3,12 +3,12 @@ lvim.plugins = {
   {
     "L3MON4D3/LuaSnip",
     -- follow latest release.
-    version = "2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    version = "2.*",     -- Replace <CurrentMajor> by the latest released major (first number of latest release)
     -- install jsregexp (optional!).
     build = "make install_jsregexp",
     event = "InsertEnter",
     config = function()
-      require("luasnip").config.set_config({ -- Setting LuaSnip config
+      require("luasnip").config.set_config({       -- Setting LuaSnip config
 
         -- Enable autotriggered snippets
         enable_autosnippets = true,
@@ -73,10 +73,10 @@ lvim.plugins = {
         -- Where the plugin keeps files data
         hashfile = vim.fn.stdpath("data") .. "/config-local",
 
-        autocommands_create = true, -- Create autocommands (VimEnter, DirectoryChanged)
-        commands_create = true,     -- Create commands (ConfigLocalSource, ConfigLocalEdit, ConfigLocalTrust, ConfigLocalIgnore)
-        silent = false,             -- Disable plugin messages (Config loaded/ignored)
-        lookup_parents = true,      -- Lookup config files in parent directories
+        autocommands_create = true,         -- Create autocommands (VimEnter, DirectoryChanged)
+        commands_create = true,             -- Create commands (ConfigLocalSource, ConfigLocalEdit, ConfigLocalTrust, ConfigLocalIgnore)
+        silent = false,                     -- Disable plugin messages (Config loaded/ignored)
+        lookup_parents = true,              -- Lookup config files in parent directories
       }
     end
   },
@@ -86,7 +86,7 @@ lvim.plugins = {
   {
     "kylechui/nvim-surround",
 
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    version = "*",     -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
       require("nvim-surround").setup({
@@ -148,8 +148,8 @@ lvim.plugins = {
     end,
     event = 'LspAttach',
     dependencies = {
-      'nvim-treesitter/nvim-treesitter', -- optional
-      'nvim-tree/nvim-web-devicons'      -- optional
+      'nvim-treesitter/nvim-treesitter',       -- optional
+      'nvim-tree/nvim-web-devicons'            -- optional
     }
   },
   {
@@ -182,12 +182,12 @@ lvim.plugins = {
     dependencies = "nvim-treesitter/nvim-treesitter",
     ft = 'markdown',
     event = "VeryLazy",
-    config = true, -- or `opts = {}`
+    config = true,     -- or `opts = {}`
   },
-  {
-    "chaoren/vim-wordmotion",
-    event = "VeryLazy",
-  },
+  -- {
+  --     "chaoren/vim-wordmotion",
+  --     event = "VeryLazy",
+  -- },
   {
     "lewis6991/satellite.nvim",
     event = "VeryLazy",
@@ -256,8 +256,8 @@ lvim.plugins = {
   },
   {
     "chrisgrieser/nvim-origami",
-    event = "BufReadPost", -- later or on keypress would prevent saving folds
-    opts = true,           -- needed even when using default config
+    event = "BufReadPost",     -- later or on keypress would prevent saving folds
+    opts = true,               -- needed even when using default config
   },
   {
     'dstein64/nvim-scrollview',
@@ -270,5 +270,15 @@ lvim.plugins = {
       require('modes').setup()
     end,
     event = 'VeryLazy'
-  }
+  },
+  {
+    "j-hui/fidget.nvim",
+    opts = {
+      -- options
+    },
+  },
+  {
+    'axkirillov/hbac.nvim',
+    config = true,
+ }
 }

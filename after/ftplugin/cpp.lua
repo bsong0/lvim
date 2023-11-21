@@ -3,10 +3,8 @@ formatters.setup {
     { name = "clang_format" }
 }
 vim.keymap.set('n', 'gh', ':ClangdSwitchSourceHeader<CR>')
-if os.getenv("USE_2_INDENT") then
-    vim.o.tabstop = 2
-    vim.opt.shiftwidth = 2
-end
+vim.o.tabstop = 2
+vim.opt.shiftwidth = 2
 
 vim.keymap.set({ "n", "v" }, "<leader>lf", function()
     vim.lsp.buf.format({ async = true })
