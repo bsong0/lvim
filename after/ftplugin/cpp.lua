@@ -18,8 +18,8 @@ vim.keymap.set({ "n", "v" }, "<leader>lF", '<cmd>Lspsaga code_action<CR>')
 local opts = {}
 local clangd_flags = {
     "--background-index",
-    "--fallback-style=google",
-    "-j=12",
+    "--fallback-style=chromium",
+    "-j=16",
     "--all-scopes-completion",
     "--pch-storage=memory",
     "--clang-tidy",

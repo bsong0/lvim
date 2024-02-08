@@ -1,7 +1,3 @@
-lua << EOF
-lvim.builtin.cmp.active = false
-EOF
-
 if empty(v:servername) && exists('*remote_startserver')
   call remote_startserver('VIM')
 endif
@@ -53,8 +49,9 @@ let g:tex_flavor = 'latex'  " recognize tex files as latex
 let g:tex_indent_items=0
 
 " Compilation
-noremap <leader>c <Cmd>update<CR><Cmd>VimtexCompileSS<CR>
+" noremap <leader>c <Cmd>update<CR><Cmd>VimtexCompileSS<CR>
 noremap <leader>r <Cmd>update<CR><Cmd>VimtexCompile<CR>
+
 
 " Write the line "TEX" to the file "/tmp/inverse-search-target.txt".
 " I use the file  "/tmp/inverse-search-target.txt" as part of making inverse 

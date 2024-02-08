@@ -1,5 +1,4 @@
 lvim.plugins = {
-
   {
     "L3MON4D3/LuaSnip",
     -- follow latest release.
@@ -225,29 +224,30 @@ lvim.plugins = {
     "andweeb/presence.nvim",
     event = "VeryLazy"
   },
-  {
-    "zbirenbaum/neodim",
-    event = "LspAttach",
-    config = function()
-      require("neodim").setup({
-        refresh_delay = 75,
-        alpha = 0.75,
-        blend_color = "#000000",
-        hide = {
-          underline = true,
-          virtual_text = true,
-          signs = true,
-        },
-        regex = {
-          "[uU]nused",
-          "[nN]ever [rR]ead",
-          "[nN]ot [rR]ead",
-        },
-        priority = 128,
-        disable = {},
-      })
-    end
-  },
+  -- {
+  --   "zbirenbaum/neodim",
+  --   event = "LspAttach",
+  --   branch = "v2",
+  --   config = function()
+  --     require("neodim").setup({
+  --       refresh_delay = 75,
+  --       alpha = 0.75,
+  --       blend_color = "#000000",
+  --       hide = {
+  --         underline = true,
+  --         virtual_text = true,
+  --         signs = true,
+  --       },
+  --       regex = {
+  --         "[uU]nused",
+  --         "[nN]ever [rR]ead",
+  --         "[nN]ot [rR]ead",
+  --       },
+  --       priority = 128,
+  --       disable = {},
+  --     })
+  --   end
+  -- },
   {
     "max397574/better-escape.nvim",
     config = function()
@@ -280,5 +280,31 @@ lvim.plugins = {
   {
     'axkirillov/hbac.nvim',
     config = true,
- }
+  },
+  {
+    'nvim-orgmode/orgmode',
+    dependencies = {
+      { 'nvim-treesitter/nvim-treesitter', lazy = true },
+    },
+    ft = 'org',
+    config = function()
+      -- Load treesitter grammar for org
+      require('orgmode').setup_ts_grammar()
+
+      -- Setup treesitter
+      require('nvim-treesitter.configs').setup({
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = { 'org' },
+        },
+        ensure_installed = { 'org' },
+      })
+
+      -- Setup orgmode
+      require('orgmode').setup({
+        org_agenda_files = '~/orgfiles/**/*',
+        org_default_notes_file = '~/orgfiles/refile.org',
+      })
+    end,
+  }
 }
